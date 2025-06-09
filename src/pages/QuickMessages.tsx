@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,6 +22,15 @@ import {
   Image as ImageIcon,
   Trash2,
   Edit,
+  ArrowLeft,
+  MessageSquare,
+  Settings,
+  Image,
+  Tags,
+  Database,
+  Zap,
+  ExternalLink,
+  Globe,
 } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 
