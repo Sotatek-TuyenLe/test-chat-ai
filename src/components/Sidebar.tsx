@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   BarChart3,
   Bot,
@@ -155,13 +156,13 @@ const Sidebar = ({
       onMobileToggle();
     }
 
-    // Navigate to the href
-    window.location.href = item.href;
+    // Use React Router navigation for smooth transitions
+    navigate(item.href);
   };
 
   const handleLogout = () => {
     console.log("Logging out...");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (

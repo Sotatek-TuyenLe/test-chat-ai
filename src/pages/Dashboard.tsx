@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -12,9 +13,10 @@ const Dashboard = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [templateSearch, setTemplateSearch] = useState("");
+  const location = useLocation();
 
   // Check if we're on pricing page
-  const isPricingPage = window.location.pathname === "/pricing";
+  const isPricingPage = location.pathname === "/pricing";
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
@@ -70,6 +72,84 @@ const Dashboard = () => {
           {isPricingPage ? (
             // Show pricing content
             <PricingContent />
+          ) : location.pathname === "/dashboard/profile" ? (
+            // Show profile content
+            <div className="p-8 max-w-7xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-white"
+              >
+                <h1 className="text-3xl font-bold mb-6">Thông tin cá nhân</h1>
+                <p className="text-slate-400 mb-8">
+                  Quản lý thông tin cá nhân và cài đặt tài khoản của bạn.
+                </p>
+
+                <div className="bg-slate-800 rounded-lg p-6">
+                  <h2 className="text-xl font-semibold mb-4">
+                    Thông tin tài khoản
+                  </h2>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                        Họ và tên
+                      </label>
+                      <div className="bg-slate-700 rounded-md p-3 text-white">
+                        Huỳnh Mạc Tử Khoa
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                        Email
+                      </label>
+                      <div className="bg-slate-700 rounded-md p-3 text-white">
+                        tukhoahuynh@example.com
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                        Gói dịch vụ
+                      </label>
+                      <div className="bg-slate-700 rounded-md p-3 text-white">
+                        Gói dùng thử
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          ) : location.pathname.includes("/dashboard/") ? (
+            // Show other dashboard pages
+            <div className="p-8 max-w-7xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-white text-center"
+              >
+                <h1 className="text-3xl font-bold mb-6">
+                  {location.pathname === "/dashboard/train" &&
+                    "Đào tạo chatbot"}
+                  {location.pathname === "/dashboard/messages" &&
+                    "Quản lý tin nhắn"}
+                  {location.pathname === "/dashboard/analytics" && "Thống kê"}
+                  {location.pathname === "/dashboard/transactions" &&
+                    "Lịch sử giao dịch"}
+                  {location.pathname === "/dashboard/affiliate" && "Affiliate"}
+                  {location.pathname === "/dashboard/support" &&
+                    "Hỗ trợ yêu cầu ticket"}
+                  {location.pathname === "/dashboard/usage" &&
+                    "Hạn mức sử dụng"}
+                  {location.pathname === "/dashboard/settings" && "Cài đặt"}
+                </h1>
+                <p className="text-slate-400 text-lg">
+                  Trang này đang được phát triển. Vui lòng quay lại sau.
+                </p>
+              </motion.div>
+            </div>
           ) : (
             // Show regular dashboard content
             <div className="p-8 max-w-7xl mx-auto">
