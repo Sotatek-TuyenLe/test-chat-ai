@@ -125,7 +125,7 @@ const Sidebar = ({
 
   // Determine active tab based on current URL
   useEffect(() => {
-    const currentPath = window.location.pathname;
+    const currentPath = location.pathname;
     if (currentPath === "/pricing") {
       setActiveTab("pricing");
     } else if (currentPath.includes("/dashboard/profile")) {
@@ -147,7 +147,7 @@ const Sidebar = ({
     } else {
       setActiveTab("messages"); // Default to messages for dashboard
     }
-  }, []);
+  }, [location.pathname]);
 
   const handleNavClick = (item: any, event: React.MouseEvent) => {
     event.preventDefault();
