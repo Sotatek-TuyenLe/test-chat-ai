@@ -130,7 +130,11 @@ const Sidebar = ({
       setActiveTab("pricing");
     } else if (currentPath.includes("/dashboard/profile")) {
       setActiveTab("profile");
-    } else if (currentPath.includes("/dashboard/train")) {
+    } else if (
+      currentPath.includes("/dashboard/train") ||
+      currentPath.includes("/chatbot/")
+    ) {
+      // Keep "Đào tạo chatbot" active for both training page and chatbot settings/integrations
       setActiveTab("train");
     } else if (currentPath.includes("/dashboard/analytics")) {
       setActiveTab("analytics");
@@ -144,6 +148,8 @@ const Sidebar = ({
       setActiveTab("usage");
     } else if (currentPath.includes("/dashboard/settings")) {
       setActiveTab("settings");
+    } else if (currentPath.includes("/dashboard/messages")) {
+      setActiveTab("messages");
     } else {
       setActiveTab("messages"); // Default to messages for dashboard
     }
