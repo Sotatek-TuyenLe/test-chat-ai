@@ -232,6 +232,7 @@ const ChatbotSettings = () => {
                 <Button
                   variant="ghost"
                   className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                  onClick={() => navigate("/chatbot/1/integrations")}
                 >
                   <Settings className="h-4 w-4 mr-3 flex-shrink-0" />
                   <span className="flex-1 text-left">Tích hợp nền tảng</span>
@@ -385,7 +386,7 @@ const ChatbotSettings = () => {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="slow">Chậm (mặc định)</SelectItem>
+                          <SelectItem value="slow">Chậm (mặc đ��nh)</SelectItem>
                           <SelectItem value="default">Bình thường</SelectItem>
                           <SelectItem value="fast">Nhanh</SelectItem>
                         </SelectContent>
@@ -406,7 +407,7 @@ const ChatbotSettings = () => {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="ecommerce">Ecommerce</SelectItem>
-                          <SelectItem value="service">Dịch vụ</SelectItem>
+                          <SelectItem value="service">D���ch vụ</SelectItem>
                           <SelectItem value="education">Giáo dục</SelectItem>
                           <SelectItem value="other">Khác</SelectItem>
                         </SelectContent>
