@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import ChatbotSettings from "./pages/ChatbotSettings";
 import PlatformIntegrations from "./pages/PlatformIntegrations";
 import QuickMessages from "./pages/QuickMessages";
+import TagManagement from "./pages/TagManagement";
 import ChatInterface from "./pages/ChatInterface";
 import NotFound from "./pages/NotFound";
 
