@@ -33,6 +33,7 @@ interface QuickMessage {
 }
 
 const QuickMessages = () => {
+  const navigate = useNavigate();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,6 +47,10 @@ const QuickMessages = () => {
 
   const toggleSidebar = () => setSidebarCollapsed(!sidebarCollapsed);
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  const handleBack = () => {
+    navigate("/chatbot/1/settings");
+  };
 
   const handleAddMessage = () => {
     if (shortcut.trim() && content.trim()) {
@@ -97,7 +102,7 @@ const QuickMessages = () => {
       />
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto bg-white">
+      <div className="flex-1 overflow-y-auto">
         {/* Mobile Header */}
         <div className="lg:hidden bg-slate-900 border-b border-slate-800 p-4 flex items-center justify-between">
           <Button
@@ -117,7 +122,125 @@ const QuickMessages = () => {
           <div className="w-10"></div>
         </div>
 
-        <div className="p-8 max-w-7xl mx-auto">
+        <div className="flex h-full">
+          {/* Left Sidebar Menu */}
+          <div className="w-52 bg-slate-800 border-r border-slate-700 hidden lg:block">
+            {/* Header */}
+            <div className="p-6 border-b border-slate-700">
+              <div className="flex items-center space-x-3">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleBack}
+                  className="p-2 text-slate-400 hover:text-white"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <div className="h-8 w-8 bg-red-600 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">S</span>
+                </div>
+                <div>
+                  <h2 className="text-white font-semibold">SDQWE</h2>
+                </div>
+              </div>
+            </div>
+
+            {/* Menu Items */}
+            <div className="p-4">
+              <div className="space-y-2">
+                {/* Chat Interface */}
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-white bg-purple-600 hover:bg-purple-700 h-10 px-3"
+                  onClick={() => navigate("/chatbot/1/chat")}
+                >
+                  <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Chat với</span>
+                </Button>
+
+                {/* Main Menu Items */}
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <span className="flex-1 text-left">Tùy chọn</span>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                  onClick={() => navigate("/chatbot/1/settings")}
+                >
+                  <Settings className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tổng quan</span>
+                </Button>
+
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <Image className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Thư viện ảnh</span>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-purple-400 hover:text-white hover:bg-slate-700 h-10 px-3"
+                >
+                  <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tin nhắn nhanh</span>
+                  <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">New</Badge>
+                </Button>
+
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <Tags className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Quản lý tags</span>
+                  <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">New</Badge>
+                </Button>
+
+                <div className="border-t border-slate-600 my-4"></div>
+
+                {/* Data Section */}
+                <div className="text-slate-400 text-sm font-medium mb-3 px-3">Dữ liệu</div>
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <Database className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Dữ liệu huấn luyện</span>
+                </Button>
+
+                <div className="border-t border-slate-600 my-4"></div>
+
+                {/* Operation Section */}
+                <div className="text-slate-400 text-sm font-medium mb-3 px-3">Operation</div>
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <Zap className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Kịch bản chốt sales</span>
+                </Button>
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <Database className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Quản lý sản phẩm</span>
+                </Button>
+
+                <div className="border-t border-slate-600 my-4"></div>
+
+                {/* Development Section */}
+                <div className="text-slate-400 text-sm font-medium mb-3 px-3">Development</div>
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <ExternalLink className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tool Ads Facebook</span>
+                </Button>
+                <Button variant="ghost" className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3">
+                  <Globe className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Website</span>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                  onClick={() => navigate("/chatbot/1/integrations")}
+                >
+                  <Settings className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tích hợp nền tảng</span>
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content Area */}
+          <div className="flex-1 bg-white">
+            <div className="p-8 max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -393,8 +516,8 @@ const QuickMessages = () => {
                 </Button>
               </div>
             </div>
-          </DialogContent>
-        </Dialog>
+          </div>
+        </div>
       </div>
     </div>
   );
