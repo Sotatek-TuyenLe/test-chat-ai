@@ -298,15 +298,15 @@ const Sidebar = ({
                     onClick={(e) => handleNavClick(item, e)}
                     className={cn(
                       "w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200",
-                      "hover:bg-slate-800 group relative",
+                      "hover:bg-slate-800 group relative border-0 outline-none focus:outline-none focus:ring-0",
                       {
                         "bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 text-white":
                           isActive && !item.special,
                         "bg-gradient-to-r from-yellow-600/20 to-orange-600/20 border border-yellow-500/30 text-yellow-300":
                           isActive && item.special,
-                        "text-slate-400 hover:text-white":
+                        "text-slate-400 hover:text-white border-0":
                           !isActive && !item.special,
-                        "text-yellow-400 hover:text-yellow-300":
+                        "text-yellow-400 hover:text-yellow-300 border-0":
                           !isActive && item.special,
                       },
                     )}
