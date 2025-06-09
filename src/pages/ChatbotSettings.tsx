@@ -94,7 +94,7 @@ const ChatbotSettings = () => {
 
         <div className="flex h-full">
           {/* Left Sidebar Menu */}
-          <div className="w-80 bg-slate-800 border-r border-slate-700 hidden lg:block">
+          <div className="w-64 bg-slate-800 border-r border-slate-700 hidden lg:block">
             {/* Header */}
             <div className="p-6 border-b border-slate-700">
               <div className="flex items-center space-x-3">
@@ -445,7 +445,7 @@ const ChatbotSettings = () => {
           </div>
 
           {/* Right Sidebar - Chat Preview */}
-          <div className="w-80 bg-slate-800 border-l border-slate-700 p-6 hidden xl:block">
+          <div className="w-72 bg-slate-800 border-l border-slate-700 p-6 hidden xl:block">
             <div className="space-y-4">
               <h3 className="text-white font-semibold">Preview</h3>
 
