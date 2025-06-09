@@ -38,6 +38,8 @@ const Index = () => {
 
   const handleContinue = () => {
     console.log("Company:", companyName, "Industry:", selectedIndustry);
+    // Navigate to dashboard
+    window.location.href = "/dashboard";
   };
 
   return (
