@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import ChatbotSettings from "./pages/ChatbotSettings";
 import PlatformIntegrations from "./pages/PlatformIntegrations";
+import QuickMessages from "./pages/QuickMessages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,10 @@ const App = () => (
           <Route
             path="/chatbot/:id/integrations"
             element={<PlatformIntegrations />}
+          />
+          <Route
+            path="/chatbot/:id/quick-messages"
+            element={<QuickMessages />}
           />
           <Route path="/pricing" element={<Dashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

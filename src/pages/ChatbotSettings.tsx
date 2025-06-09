@@ -157,6 +157,7 @@ const ChatbotSettings = () => {
                 <Button
                   variant="ghost"
                   className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                  onClick={() => navigate("/chatbot/1/quick-messages")}
                 >
                   <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
                   <span className="flex-1 text-left">Tin nhắn nhanh</span>
@@ -164,7 +165,6 @@ const ChatbotSettings = () => {
                     New
                   </Badge>
                 </Button>
-
                 <Button
                   variant="ghost"
                   className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
