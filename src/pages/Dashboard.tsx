@@ -34,6 +34,7 @@ const Dashboard = () => {
   // Check if we're on pricing page
   const isPricingPage = location.pathname === "/pricing";
   const isTrainPage = location.pathname === "/dashboard/train";
+  const isMessagesPage = location.pathname === "/dashboard/messages";
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
