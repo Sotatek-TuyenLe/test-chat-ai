@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Settings, Trash2 } from "lucide-react";
@@ -43,8 +44,10 @@ const mockChatbots = [
 ];
 
 const ChatbotList = () => {
+  const navigate = useNavigate();
+
   const handleEdit = (id: number) => {
-    console.log("Edit chatbot:", id);
+    navigate(`/chatbot/${id}/settings`);
   };
 
   const handleDelete = (id: number) => {

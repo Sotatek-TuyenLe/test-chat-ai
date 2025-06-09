@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -50,8 +51,10 @@ const mockChatbots = [
 ];
 
 const ChatbotGrid = () => {
+  const navigate = useNavigate();
+
   const handleEdit = (id: number) => {
-    console.log("Edit chatbot:", id);
+    navigate(`/chatbot/${id}/settings`);
   };
 
   const handleDelete = (id: number) => {
