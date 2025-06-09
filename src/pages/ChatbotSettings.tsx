@@ -125,6 +125,7 @@ const ChatbotSettings = () => {
                 <Button
                   variant="ghost"
                   className="w-full justify-start text-white bg-purple-600 hover:bg-purple-700 h-10 px-3"
+                  onClick={() => navigate("/chatbot/1/chat")}
                 >
                   <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
                   <span className="flex-1 text-left">Chat với</span>
