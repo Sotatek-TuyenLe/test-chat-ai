@@ -38,8 +38,8 @@ const Index = () => {
 
   const handleContinue = () => {
     console.log("Company:", companyName, "Industry:", selectedIndustry);
-    // Navigate to dashboard
-    window.location.href = "/dashboard";
+    // Navigate to login page
+    window.location.href = "/login";
   };
 
   return (
@@ -66,6 +66,7 @@ const Index = () => {
             <Button
               variant="outline"
               className="text-gray-600 hover:text-gray-800"
+              onClick={() => (window.location.href = "/login")}
             >
               Tiếp tục
               <ArrowRight className="ml-2 h-4 w-4" />
