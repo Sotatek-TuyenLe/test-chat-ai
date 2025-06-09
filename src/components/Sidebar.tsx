@@ -248,23 +248,19 @@ const Sidebar = ({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <a
-                    href={item.href}
-                    className={cn(
-                      "flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200",
-                      "hover:bg-slate-800 group relative",
-                      {
-                        "bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 text-white":
-                          item.active,
-                        "text-slate-400 hover:text-white":
-                          !item.active && !item.special,
-                        "text-yellow-400 hover:text-yellow-300": item.special,
-                      },
-                    )}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <IconComponent
-                        className={cn("h-5 w-5 flex-shrink-0", {
+                <button
+                  onClick={(e) => handleNavClick(item, e)}
+                  className={cn(
+                    "w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200",
+                    "hover:bg-slate-800 group relative",
+                    {
+                      "bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 text-white": activeTab === item.id,
+                      "text-slate-400 hover:text-white": activeTab !== item.id && !item.special,
+                      "text-yellow-400 hover:text-yellow-300": item.special && activeTab !== item.id,
+                      "text-yellow-300": item.special && activeTab === item.id,
+                    }
+                  )}
+                >
                           "text-purple-400": item.active,
                           "text-yellow-400": item.special,
                         })}
@@ -284,11 +280,11 @@ const Sidebar = ({
                       </AnimatePresence>
                     </div>
 
-                    {/* Expandable arrow for settings */}
-                    {item.expandable && (!isCollapsed || isMobile) && (
-                      <ChevronRight className="h-4 w-4 text-slate-400" />
-                    )}
-                  </a>
+                  {/* Expandable arrow for settings */}
+                  {item.expandable && (!isCollapsed || isMobile) && (
+                    <ChevronRight className="h-4 w-4 text-slate-400" />
+                  )}
+                </button>
                 </motion.li>
               );
             })}
