@@ -11,6 +11,14 @@ import {
   Plus,
   User,
   ChevronDown,
+  MessageSquare,
+  TrendingUp,
+  History,
+  Users,
+  HelpCircle,
+  Gauge,
+  Crown,
+  ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -24,34 +32,66 @@ interface SidebarProps {
 
 const navigationItems = [
   {
-    icon: BarChart3,
-    label: "Bảng điều khiển",
-    href: "/dashboard",
+    icon: User,
+    label: "Thông tin cá nhân",
+    href: "/dashboard/profile",
     active: false,
   },
   {
     icon: Bot,
-    label: "Tạo Chatbot AI",
-    href: "/dashboard/create",
+    label: "Đào tạo chatbot",
+    href: "/dashboard/train",
+    active: false,
+  },
+  {
+    icon: MessageSquare,
+    label: "Quản lý tin nhắn",
+    href: "/dashboard/messages",
     active: true,
   },
   {
-    icon: BookOpen,
-    label: "Kho tri thức",
-    href: "/dashboard/knowledge",
+    icon: TrendingUp,
+    label: "Thống kê",
+    href: "/dashboard/analytics",
     active: false,
   },
   {
-    icon: HomeIcon,
-    label: "Trang mẫu",
-    href: "/dashboard/templates",
+    icon: History,
+    label: "Lịch sử giao dịch",
+    href: "/dashboard/transactions",
     active: false,
+  },
+  {
+    icon: Users,
+    label: "Affiliate",
+    href: "/dashboard/affiliate",
+    active: false,
+  },
+  {
+    icon: HelpCircle,
+    label: "Hỗ trợ yêu cầu ticket",
+    href: "/dashboard/support",
+    active: false,
+  },
+  {
+    icon: Gauge,
+    label: "Hạn mức sử dụng",
+    href: "/dashboard/usage",
+    active: false,
+  },
+  {
+    icon: Crown,
+    label: "Nâng cấp",
+    href: "/pricing",
+    active: false,
+    special: true,
   },
   {
     icon: Settings,
-    label: "Tích hợp",
-    href: "/dashboard/integrations",
+    label: "Cài đặt",
+    href: "/dashboard/settings",
     active: false,
+    expandable: true,
   },
 ];
 
