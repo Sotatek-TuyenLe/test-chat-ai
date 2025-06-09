@@ -40,62 +40,62 @@ const navigationItems = [
     icon: User,
     label: "Thông tin cá nhân",
     href: "/dashboard/profile",
-    active: false,
+    id: "profile",
   },
   {
     icon: Bot,
     label: "Đào tạo chatbot",
     href: "/dashboard/train",
-    active: false,
+    id: "train",
   },
   {
     icon: MessageSquare,
     label: "Quản lý tin nhắn",
     href: "/dashboard/messages",
-    active: true,
+    id: "messages",
   },
   {
     icon: TrendingUp,
     label: "Thống kê",
     href: "/dashboard/analytics",
-    active: false,
+    id: "analytics",
   },
   {
     icon: History,
     label: "Lịch sử giao dịch",
     href: "/dashboard/transactions",
-    active: false,
+    id: "transactions",
   },
   {
     icon: Users,
     label: "Affiliate",
     href: "/dashboard/affiliate",
-    active: false,
+    id: "affiliate",
   },
   {
     icon: HelpCircle,
     label: "Hỗ trợ yêu cầu ticket",
     href: "/dashboard/support",
-    active: false,
+    id: "support",
   },
   {
     icon: Gauge,
     label: "Hạn mức sử dụng",
     href: "/dashboard/usage",
-    active: false,
+    id: "usage",
   },
   {
     icon: Crown,
     label: "Nâng cấp",
     href: "/pricing",
-    active: false,
+    id: "pricing",
     special: true,
   },
   {
     icon: Settings,
     label: "Cài đặt",
     href: "/dashboard/settings",
-    active: false,
+    id: "settings",
     expandable: true,
   },
 ];
@@ -108,6 +108,7 @@ const Sidebar = ({
 }: SidebarProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobile, setIsMobile] = useState(false);
+  const [activeTab, setActiveTab] = useState("messages"); // Default to messages
 
   useEffect(() => {
     const checkMobile = () => {
@@ -118,6 +119,45 @@ const Sidebar = ({
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Determine active tab based on current URL
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    if (currentPath === "/pricing") {
+      setActiveTab("pricing");
+    } else if (currentPath.includes("/dashboard/profile")) {
+      setActiveTab("profile");
+    } else if (currentPath.includes("/dashboard/train")) {
+      setActiveTab("train");
+    } else if (currentPath.includes("/dashboard/analytics")) {
+      setActiveTab("analytics");
+    } else if (currentPath.includes("/dashboard/transactions")) {
+      setActiveTab("transactions");
+    } else if (currentPath.includes("/dashboard/affiliate")) {
+      setActiveTab("affiliate");
+    } else if (currentPath.includes("/dashboard/support")) {
+      setActiveTab("support");
+    } else if (currentPath.includes("/dashboard/usage")) {
+      setActiveTab("usage");
+    } else if (currentPath.includes("/dashboard/settings")) {
+      setActiveTab("settings");
+    } else {
+      setActiveTab("messages"); // Default to messages for dashboard
+    }
+  }, []);
+
+  const handleNavClick = (item: any, event: React.MouseEvent) => {
+    event.preventDefault();
+    setActiveTab(item.id);
+
+    // Close mobile menu when item is clicked
+    if (isMobile) {
+      onMobileToggle();
+    }
+
+    // Navigate to the href
+    window.location.href = item.href;
+  };
 
   const handleLogout = () => {
     console.log("Logging out...");
@@ -236,33 +276,44 @@ const Sidebar = ({
             )}
           </AnimatePresence>
         </div>
+
         {/* Navigation */}
         <nav className="flex-1 p-4">
           <ul className="space-y-1">
             {navigationItems.map((item, index) => {
               const IconComponent = item.icon;
+              const isActive = activeTab === item.id;
+
               return (
                 <motion.li
-                  key={item.href}
+                  key={item.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                <button
-                  onClick={(e) => handleNavClick(item, e)}
-                  className={cn(
-                    "w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200",
-                    "hover:bg-slate-800 group relative",
-                    {
-                      "bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 text-white": activeTab === item.id,
-                      "text-slate-400 hover:text-white": activeTab !== item.id && !item.special,
-                      "text-yellow-400 hover:text-yellow-300": item.special && activeTab !== item.id,
-                      "text-yellow-300": item.special && activeTab === item.id,
-                    }
-                  )}
-                >
-                          "text-purple-400": item.active,
-                          "text-yellow-400": item.special,
+                  <button
+                    onClick={(e) => handleNavClick(item, e)}
+                    className={cn(
+                      "w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200",
+                      "hover:bg-slate-800 group relative",
+                      {
+                        "bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 text-white":
+                          isActive && !item.special,
+                        "bg-gradient-to-r from-yellow-600/20 to-orange-600/20 border border-yellow-500/30 text-yellow-300":
+                          isActive && item.special,
+                        "text-slate-400 hover:text-white":
+                          !isActive && !item.special,
+                        "text-yellow-400 hover:text-yellow-300":
+                          !isActive && item.special,
+                      },
+                    )}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <IconComponent
+                        className={cn("h-5 w-5 flex-shrink-0", {
+                          "text-purple-400": isActive && !item.special,
+                          "text-yellow-300": isActive && item.special,
+                          "text-yellow-400": !isActive && item.special,
                         })}
                       />
                       <AnimatePresence mode="wait">
@@ -272,7 +323,7 @@ const Sidebar = ({
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -10 }}
                             transition={{ duration: 0.2 }}
-                            className="font-medium"
+                            className="font-medium text-left"
                           >
                             {item.label}
                           </motion.span>
@@ -280,11 +331,11 @@ const Sidebar = ({
                       </AnimatePresence>
                     </div>
 
-                  {/* Expandable arrow for settings */}
-                  {item.expandable && (!isCollapsed || isMobile) && (
-                    <ChevronRight className="h-4 w-4 text-slate-400" />
-                  )}
-                </button>
+                    {/* Expandable arrow for settings */}
+                    {item.expandable && (!isCollapsed || isMobile) && (
+                      <ChevronRight className="h-4 w-4 text-slate-400" />
+                    )}
+                  </button>
                 </motion.li>
               );
             })}
@@ -311,7 +362,7 @@ const Sidebar = ({
           <div className="flex items-center space-x-3 mb-4">
             <Avatar className="h-8 w-8">
               <AvatarFallback className="bg-purple-600 text-white text-sm">
-                TL
+                HM
               </AvatarFallback>
             </Avatar>
             <AnimatePresence mode="wait">
