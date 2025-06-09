@@ -21,6 +21,7 @@ import PricingContent from "@/components/PricingContent";
 import ChatbotGrid from "@/components/ChatbotGrid";
 import ChatbotList from "@/components/ChatbotList";
 import CreateChatbotModal from "@/components/CreateChatbotModal";
+import MessagesContent from "@/components/MessagesContent";
 
 const Dashboard = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
