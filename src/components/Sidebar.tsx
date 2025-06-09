@@ -110,6 +110,8 @@ const Sidebar = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobile, setIsMobile] = useState(false);
   const [activeTab, setActiveTab] = useState("messages"); // Default to messages
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const checkMobile = () => {
