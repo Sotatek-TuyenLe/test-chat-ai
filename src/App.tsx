@@ -44,6 +44,10 @@ const App = () => (
             path="/chatbot/:id/quick-messages"
             element={<QuickMessages />}
           />
+          <Route
+            path="/chatbot/:id/tag-management"
+            element={<TagManagement />}
+          />
           <Route path="/chatbot/:id/chat" element={<ChatInterface />} />
           <Route path="/pricing" element={<Dashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
