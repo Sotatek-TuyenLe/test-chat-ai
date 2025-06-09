@@ -11,6 +11,7 @@ import ChatbotSettings from "./pages/ChatbotSettings";
 import PlatformIntegrations from "./pages/PlatformIntegrations";
 import QuickMessages from "./pages/QuickMessages";
 import TagManagement from "./pages/TagManagement";
+import MessagesManagement from "./pages/MessagesManagement";
 import ChatInterface from "./pages/ChatInterface";
 import NotFound from "./pages/NotFound";
 
