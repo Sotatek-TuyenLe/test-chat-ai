@@ -120,120 +120,121 @@ const ChatbotSettings = () => {
 
             {/* Menu Items */}
             <div className="p-4">
-              <div className="space-y-1">
+              <div className="space-y-2">
                 {/* Chat Interface */}
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-white bg-purple-600 hover:bg-purple-700"
+                  className="w-full justify-start text-white bg-purple-600 hover:bg-purple-700 h-10 px-3"
                 >
-                  <MessageSquare className="h-4 w-4 mr-3" />
-                  Chat với
+                  <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Chat với</span>
                 </Button>
 
-                <div className="ml-6 space-y-1">
+                {/* Sub Menu */}
+                <div className="ml-4 space-y-1">
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
                   >
-                    Tùy chọn
+                    <span className="flex-1 text-left">Tùy chọn</span>
                   </Button>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-purple-400 hover:text-white hover:bg-slate-700"
+                    className="w-full justify-start text-purple-400 hover:text-white hover:bg-slate-700 h-9 px-3"
                   >
-                    <Settings className="h-4 w-4 mr-3" />
-                    Tổng quan
+                    <Settings className="h-4 w-4 mr-3 flex-shrink-0" />
+                    <span className="flex-1 text-left">Tổng quan</span>
                   </Button>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
                   >
-                    <Image className="h-4 w-4 mr-3" />
-                    Thư viện ảnh
+                    <Image className="h-4 w-4 mr-3 flex-shrink-0" />
+                    <span className="flex-1 text-left">Thư viện ảnh</span>
                   </Button>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
                   >
-                    <MessageSquare className="h-4 w-4 mr-3" />
-                    Tin nhắn nhanh
-                    <Badge className="ml-auto bg-blue-600 text-white text-xs">
+                    <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
+                    <span className="flex-1 text-left">Tin nhắn nhanh</span>
+                    <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">
                       New
                     </Badge>
                   </Button>
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
                   >
-                    <Tags className="h-4 w-4 mr-3" />
-                    Quản lý tags
-                    <Badge className="ml-auto bg-blue-600 text-white text-xs">
+                    <Tags className="h-4 w-4 mr-3 flex-shrink-0" />
+                    <span className="flex-1 text-left">Quản lý tags</span>
+                    <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">
                       New
                     </Badge>
                   </Button>
                 </div>
 
-                <Separator className="my-4 bg-slate-600" />
+                <div className="border-t border-slate-600 my-4"></div>
 
                 {/* Data Section */}
-                <div className="text-slate-400 text-sm font-medium mb-2">
+                <div className="text-slate-400 text-sm font-medium mb-3 px-3">
                   Dữ liệu
                 </div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
                 >
-                  <Database className="h-4 w-4 mr-3" />
-                  Dữ liệu huấn luyện
+                  <Database className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Dữ liệu huấn luyện</span>
                 </Button>
 
-                <Separator className="my-4 bg-slate-600" />
+                <div className="border-t border-slate-600 my-4"></div>
 
                 {/* Operation Section */}
-                <div className="text-slate-400 text-sm font-medium mb-2">
+                <div className="text-slate-400 text-sm font-medium mb-3 px-3">
                   Operation
                 </div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
                 >
-                  <Zap className="h-4 w-4 mr-3" />
-                  Kịch bản chốt sales
+                  <Zap className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Kịch bản chốt sales</span>
                 </Button>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
                 >
-                  <Database className="h-4 w-4 mr-3" />
-                  Quản lý sản phẩm
+                  <Database className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Quản lý sản phẩm</span>
                 </Button>
 
-                <Separator className="my-4 bg-slate-600" />
+                <div className="border-t border-slate-600 my-4"></div>
 
                 {/* Development Section */}
-                <div className="text-slate-400 text-sm font-medium mb-2">
+                <div className="text-slate-400 text-sm font-medium mb-3 px-3">
                   Development
                 </div>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
                 >
-                  <ExternalLink className="h-4 w-4 mr-3" />
-                  Tool Ads Facebook
+                  <ExternalLink className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tool Ads Facebook</span>
                 </Button>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
                 >
-                  <Globe className="h-4 w-4 mr-3" />
-                  Website
+                  <Globe className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Website</span>
                 </Button>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
                 >
-                  <Settings className="h-4 w-4 mr-3" />
-                  Tích hợp nền tảng
+                  <Settings className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tích hợp nền tảng</span>
                 </Button>
               </div>
             </div>
