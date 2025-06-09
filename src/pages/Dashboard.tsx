@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Search, Palette } from "lucide-react";
+import { Plus, Search, Palette, Menu } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import ChatbotTemplates from "@/components/ChatbotTemplates";
 import PricingContent from "@/components/PricingContent";
 
 const Dashboard = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [templateSearch, setTemplateSearch] = useState("");
 
   // Check if we're on pricing page
@@ -19,10 +20,19 @@ const Dashboard = () => {
     setSidebarCollapsed(!sidebarCollapsed);
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <div className="min-h-screen bg-slate-900 flex">
       {/* Sidebar */}
-      <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} />
+      <Sidebar
+        isCollapsed={sidebarCollapsed}
+        onToggle={toggleSidebar}
+        isMobileOpen={mobileMenuOpen}
+        onMobileToggle={toggleMobileMenu}
+      />
 
       {/* Main Content */}
       <motion.main
@@ -38,6 +48,25 @@ const Dashboard = () => {
       >
         {/* Main Content Area */}
         <div className="flex-1 overflow-y-auto">
+          {/* Mobile Header */}
+          <div className="lg:hidden bg-slate-900 border-b border-slate-800 p-4 flex items-center justify-between">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleMobileMenu}
+              className="text-slate-400 hover:text-white hover:bg-slate-800 p-2"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+            <div className="flex items-center space-x-3">
+              <div className="h-8 w-8 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">CV</span>
+              </div>
+              <span className="text-white font-bold text-lg">CHATBOTVIET</span>
+            </div>
+            <div className="w-10"></div> {/* Spacer for centering */}
+          </div>
+
           {isPricingPage ? (
             // Show pricing content
             <PricingContent />
