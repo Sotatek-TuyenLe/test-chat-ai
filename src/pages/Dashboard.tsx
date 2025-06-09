@@ -4,19 +4,35 @@ import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Search, Palette, Menu, User, ChevronDown } from "lucide-react";
+import {
+  Plus,
+  Search,
+  Palette,
+  Menu,
+  User,
+  ChevronDown,
+  Grid3X3,
+  List,
+  Bot,
+} from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import ChatbotTemplates from "@/components/ChatbotTemplates";
 import PricingContent from "@/components/PricingContent";
+import ChatbotGrid from "@/components/ChatbotGrid";
+import ChatbotList from "@/components/ChatbotList";
+import CreateChatbotModal from "@/components/CreateChatbotModal";
 
 const Dashboard = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [templateSearch, setTemplateSearch] = useState("");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [createModalOpen, setCreateModalOpen] = useState(false);
   const location = useLocation();
 
   // Check if we're on pricing page
   const isPricingPage = location.pathname === "/pricing";
+  const isTrainPage = location.pathname === "/dashboard/train";
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
@@ -235,6 +251,76 @@ const Dashboard = () => {
                 </div>
               </motion.div>
             </div>
+          ) : isTrainPage ? (
+            // Show chatbot training page
+            <div className="p-8 max-w-7xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="h-10 w-10 bg-slate-800 rounded-lg flex items-center justify-center">
+                      <Bot className="h-6 w-6 text-purple-400" />
+                    </div>
+                    <div>
+                      <h1 className="text-2xl font-bold text-white">
+                        Đào tạo chatbot
+                      </h1>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    {/* View Toggle */}
+                    <div className="flex items-center bg-slate-800 rounded-lg p-1">
+                      <button
+                        onClick={() => setViewMode("grid")}
+                        className={`p-2 rounded transition-colors duration-200 ${
+                          viewMode === "grid"
+                            ? "bg-white text-slate-900"
+                            : "text-slate-400 hover:text-white"
+                        }`}
+                      >
+                        <Grid3X3 className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => setViewMode("list")}
+                        className={`p-2 rounded transition-colors duration-200 ${
+                          viewMode === "list"
+                            ? "bg-white text-slate-900"
+                            : "text-slate-400 hover:text-white"
+                        }`}
+                      >
+                        <List className="h-4 w-4" />
+                      </button>
+                    </div>
+
+                    {/* Create Button */}
+                    <Button
+                      onClick={() => setCreateModalOpen(true)}
+                      className="bg-purple-600 hover:bg-purple-700 text-white"
+                    >
+                      <Plus className="h-4 w-4 mr-2" />
+                      Tạo chatbot
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="min-h-[400px]">
+                  {viewMode === "grid" ? <ChatbotGrid /> : <ChatbotList />}
+                </div>
+              </motion.div>
+
+              {/* Create Chatbot Modal */}
+              <CreateChatbotModal
+                open={createModalOpen}
+                onOpenChange={setCreateModalOpen}
+              />
+            </div>
           ) : location.pathname.includes("/dashboard/") ? (
             // Show other dashboard pages
             <div className="p-8 max-w-7xl mx-auto">
@@ -245,8 +331,6 @@ const Dashboard = () => {
                 className="text-white text-center"
               >
                 <h1 className="text-3xl font-bold mb-6">
-                  {location.pathname === "/dashboard/train" &&
-                    "Đào tạo chatbot"}
                   {location.pathname === "/dashboard/messages" &&
                     "Quản lý tin nhắn"}
                   {location.pathname === "/dashboard/analytics" && "Thống kê"}
