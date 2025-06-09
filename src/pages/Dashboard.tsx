@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Search, Palette, Menu } from "lucide-react";
+import { Plus, Search, Palette, Menu, User, ChevronDown } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import ChatbotTemplates from "@/components/ChatbotTemplates";
 import PricingContent from "@/components/PricingContent";
@@ -74,50 +74,164 @@ const Dashboard = () => {
             <PricingContent />
           ) : location.pathname === "/dashboard/profile" ? (
             // Show profile content
-            <div className="p-8 max-w-7xl mx-auto">
+            <div className="p-8 max-w-5xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-white"
+                className="space-y-8"
               >
-                <h1 className="text-3xl font-bold mb-6">Thông tin cá nhân</h1>
-                <p className="text-slate-400 mb-8">
-                  Quản lý thông tin cá nhân và cài đặt tài khoản của bạn.
-                </p>
+                <h1 className="text-3xl font-bold text-white mb-8">
+                  Thông tin cá nhân
+                </h1>
 
-                <div className="bg-slate-800 rounded-lg p-6">
-                  <h2 className="text-xl font-semibold mb-4">
-                    Thông tin tài khoản
+                {/* Profile Picture Section */}
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold text-white">
+                    Hình đại diện
                   </h2>
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
-                        Họ và tên
-                      </label>
-                      <div className="bg-slate-700 rounded-md p-3 text-white">
-                        Huỳnh Mạc Tử Khoa
+                  <div className="flex items-start space-x-6">
+                    <div className="w-32 h-32 bg-slate-300 rounded-lg flex items-center justify-center">
+                      <div className="w-20 h-20 bg-slate-500 rounded-full flex items-center justify-center">
+                        <User className="w-12 h-12 text-slate-400" />
                       </div>
                     </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
-                        Email
-                      </label>
-                      <div className="bg-slate-700 rounded-md p-3 text-white">
-                        tukhoahuynh@example.com
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
-                        Gói dịch vụ
-                      </label>
-                      <div className="bg-slate-700 rounded-md p-3 text-white">
-                        Gói dùng thử
-                      </div>
+                    <div className="flex-1">
+                      <p className="text-slate-400 mb-4">
+                        Dung lượng file cho phép 720x720 pixel, cao nhất là 1MB
+                      </p>
+                      <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+                        Lưu thay đổi
+                      </Button>
                     </div>
                   </div>
+                </div>
+
+                {/* User Details Section */}
+                <div className="space-y-6">
+                  <h2 className="text-xl font-semibold text-white">
+                    Chi tiết người dùng
+                  </h2>
+                  <div className="bg-slate-800 rounded-lg border border-slate-700">
+                    {/* Name */}
+                    <div className="flex items-center justify-between p-4 border-b border-slate-700">
+                      <div className="flex-1">
+                        <span className="block text-sm text-slate-400 mb-1">
+                          Tên
+                        </span>
+                        <span className="text-white font-medium">
+                          Huynh Mac Tu Khoa
+                        </span>
+                      </div>
+                      <button className="text-purple-400 hover:text-purple-300 text-sm font-medium">
+                        Chỉnh sửa
+                      </button>
+                    </div>
+
+                    {/* Language */}
+                    <div className="flex items-center justify-between p-4 border-b border-slate-700">
+                      <div className="flex-1">
+                        <span className="block text-sm text-slate-400 mb-1">
+                          Ngôn ngữ
+                        </span>
+                        <div className="flex items-center space-x-2">
+                          <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center">
+                            <span className="text-xs text-yellow-400">★</span>
+                          </div>
+                          <span className="text-white font-medium">
+                            Tiếng Việt
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* User ID */}
+                    <div className="flex items-center justify-between p-4 border-b border-slate-700">
+                      <div className="flex-1">
+                        <span className="block text-sm text-slate-400 mb-1">
+                          ID người dùng
+                        </span>
+                        <span className="text-white font-medium font-mono">
+                          684065b47c1f5a373c50601a
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Status */}
+                    <div className="flex items-center justify-between p-4 border-b border-slate-700">
+                      <div className="flex-1">
+                        <span className="block text-sm text-slate-400 mb-1">
+                          Trạng thái
+                        </span>
+                        <span className="text-green-400 font-medium">
+                          Đang hoạt động
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Password */}
+                    <div className="flex items-center justify-between p-4 border-b border-slate-700">
+                      <div className="flex-1">
+                        <span className="block text-sm text-slate-400 mb-1">
+                          Mật khẩu
+                        </span>
+                        <span className="text-white font-medium">
+                          •••••••••
+                        </span>
+                      </div>
+                      <button className="text-purple-400 hover:text-purple-300 text-sm font-medium">
+                        Chỉnh sửa
+                      </button>
+                    </div>
+
+                    {/* Email */}
+                    <div className="flex items-center justify-between p-4 border-b border-slate-700">
+                      <div className="flex-1">
+                        <span className="block text-sm text-slate-400 mb-1">
+                          E-mail
+                        </span>
+                        <span className="text-white font-medium">
+                          khoa.huynh.spm@gmail.com
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Phone */}
+                    <div className="flex items-center justify-between p-4">
+                      <div className="flex-1">
+                        <span className="block text-sm text-slate-400 mb-1">
+                          Số điện thoại
+                        </span>
+                        <span className="text-white font-medium">
+                          0945545152
+                        </span>
+                      </div>
+                      <button className="text-purple-400 hover:text-purple-300 text-sm font-medium">
+                        Chỉnh sửa
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Company Information Section */}
+                <div className="space-y-4">
+                  <details className="group">
+                    <summary className="flex items-center justify-between p-4 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer hover:bg-slate-750 transition-colors">
+                      <span className="text-white font-medium">
+                        Thông tin công ty (Nếu bạn muốn xuất hóa đơn tài chính)
+                      </span>
+                      <ChevronDown className="w-5 h-5 text-slate-400 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="mt-4 p-4 bg-slate-800 rounded-lg border border-slate-700">
+                      <p className="text-slate-400 text-sm">
+                        Thêm thông tin công ty để xuất hóa đơn VAT và các tài
+                        liệu tài chính khác.
+                      </p>
+                      <Button className="mt-4 bg-purple-600 hover:bg-purple-700 text-white">
+                        Thêm thông tin công ty
+                      </Button>
+                    </div>
+                  </details>
                 </div>
               </motion.div>
             </div>
