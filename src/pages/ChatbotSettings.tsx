@@ -130,50 +130,51 @@ const ChatbotSettings = () => {
                   <span className="flex-1 text-left">Chat với</span>
                 </Button>
 
-                {/* Sub Menu */}
-                <div className="ml-4 space-y-1">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
-                  >
-                    <span className="flex-1 text-left">Tùy chọn</span>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-purple-400 hover:text-white hover:bg-slate-700 h-9 px-3"
-                  >
-                    <Settings className="h-4 w-4 mr-3 flex-shrink-0" />
-                    <span className="flex-1 text-left">Tổng quan</span>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
-                  >
-                    <Image className="h-4 w-4 mr-3 flex-shrink-0" />
-                    <span className="flex-1 text-left">Thư viện ảnh</span>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
-                  >
-                    <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
-                    <span className="flex-1 text-left">Tin nhắn nhanh</span>
-                    <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">
-                      New
-                    </Badge>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-9 px-3"
-                  >
-                    <Tags className="h-4 w-4 mr-3 flex-shrink-0" />
-                    <span className="flex-1 text-left">Quản lý tags</span>
-                    <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">
-                      New
-                    </Badge>
-                  </Button>
-                </div>
+                {/* Main Menu Items */}
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                >
+                  <span className="flex-1 text-left">Tùy chọn</span>
+                </Button>
 
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-purple-400 hover:text-white hover:bg-slate-700 h-10 px-3"
+                >
+                  <Settings className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tổng quan</span>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                >
+                  <Image className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Thư viện ảnh</span>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                >
+                  <MessageSquare className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Tin nhắn nhanh</span>
+                  <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">
+                    New
+                  </Badge>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-slate-300 hover:text-white hover:bg-slate-700 h-10 px-3"
+                >
+                  <Tags className="h-4 w-4 mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left">Quản lý tags</span>
+                  <Badge className="bg-blue-600 text-white text-xs px-2 py-0.5 ml-2">
+                    New
+                  </Badge>
+                </Button>
                 <div className="border-t border-slate-600 my-4"></div>
 
                 {/* Data Section */}
@@ -386,7 +387,7 @@ const ChatbotSettings = () => {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="slow">Chậm (mặc đ��nh)</SelectItem>
+                          <SelectItem value="slow">Chậm (mặc định)</SelectItem>
                           <SelectItem value="default">Bình thường</SelectItem>
                           <SelectItem value="fast">Nhanh</SelectItem>
                         </SelectContent>
@@ -407,7 +408,7 @@ const ChatbotSettings = () => {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="ecommerce">Ecommerce</SelectItem>
-                          <SelectItem value="service">D���ch vụ</SelectItem>
+                          <SelectItem value="service">Dịch vụ</SelectItem>
                           <SelectItem value="education">Giáo dục</SelectItem>
                           <SelectItem value="other">Khác</SelectItem>
                         </SelectContent>
